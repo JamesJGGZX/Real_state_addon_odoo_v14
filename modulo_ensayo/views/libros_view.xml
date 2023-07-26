@@ -7,25 +7,32 @@
         <field name="model">libros</field>
         <field name="arch" type="xml">
             <form string="Libro">
+                <header>
+                <!-- Esta es la barra de estatus que sale en el menu -->
+                    <button name="boton_publicar" string="Publicar" type="object" states="draft"/>
+                    <button name="boton_borrar" string="Borrar" type="object" states="published"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
                 <sheet>
                     <group> <!-- Bootstrap 12 Columnas -->
                         <group> <!-- 6 Columnas -->
                             <field name="image" widget="image" class="oe_avatar"/>
+                            <field name="supervisor_id"/>
                             <field name="name"/>
                             <field name="editorial"/>
                             <field name="isbn"/>
                             <field name="autor_id"/>
-                            
+                            <field name="autor_last_name"/>
+                            <field name="description"/>
                         </group>
-                        <group>
-                            <field name="categoria_id"/>
-                        </group>
+                            <group>
+                                <field name="categoria_id"/>
+                            </group>
                     </group>
                 </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids"/>
                         <field name="message_ids"/>
-                        <field name="message_follower_ids"/>
                         <field name="activity_ids"/>
                         <field name="autor_id"/>
                     </div>
@@ -33,17 +40,25 @@
         </field>
     </record>
 
-    <!-- Vista Arbol para formulario -->
+    <!-- Vista Arbol (tree) para formulario -->
     <record id="libros_tree_view" model="ir.ui.view">
         <field name="name">libro.tree.view</field>
         <field name="model">libros</field>
         <field name="arch" type="xml">
-            <tree string="Libros">
-                <field name="name"/>
-                <field name="editorial"/>
-                <field name="isbn"/>
-                <field name= "autor_id"/>
-                <field name="categoria_id"/>
+        <!--Colores
+        decoration-muted: color gris a los textos de los campos
+        decoration-danger: color rojo a los textos de los campos
+        decoration-success: color verde a los textos de los campos
+        decoration-info: color azul a los textos de los campos-->
+        <!-- Decoradores para agregar colores a los campos -->
+            <tree string="Libros" decoration-muted="state == 'published'" decoration-primary="state == 'draft'">
+                <field name="name"/> 
+                <field name="editorial" optional="show"/> <!-- Recuerda que la opcion "optional='show'" es para colocar una opcion donde se puede escojer si se oculta o se ve esa informacion -->
+                <field name="isbn" optional="show"/>
+                <field name= "autor_id" optional="show"/>
+                <field name="categoria_id" optional="show"/>
+                <!-- Vista del State (Modificas estos parametros modificas el State)-->
+                <field name="state" widget="badged" decoration-danger="state == 'draft'" decoration-success="state == 'published'"/>
             </tree>
         </field>
     </record>
@@ -87,9 +102,21 @@
         <field name="model">libros</field>
         <field name="arch" type="xml">
             <search>
+                <!-- Busqueda rapida -->
                 <field name="name" string="Nombre del libro"/>
                 <field name="autor_id" string="Nombre del autor"/>
+                <!-- Filtro rapido -->
                 <filter name="categoria_cientifico" string="Cientifico" domain="[('categoria_id','=','Cientifico')]"/>
+                <!-- Agrupación rapida -->
+                <group expand="0" string="Agrupar pr" colspan="12" col="10">
+                    <filter name="categoria" string="Categoria" context="{'group_by':'categoria_id'}"/>
+                    <filter name="autor" string="Autor" context="{'group_by':'autor_id'}"/>
+                </group>
+                <searchpanel>
+                <!-- Panel de Usuarios y Categorias -->
+                    <field name="categoria_id" string="Categorias" icon="fa-users"/>
+                    <field name="autor_id" string="Autores"/>
+                </searchpanel>
             </search>
         </field>
     </record>
