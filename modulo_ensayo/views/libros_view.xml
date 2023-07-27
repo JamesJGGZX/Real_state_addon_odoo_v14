@@ -17,7 +17,7 @@
                     <group> <!-- Bootstrap 12 Columnas -->
                         <group> <!-- 6 Columnas -->
                             <field name="image" widget="image" class="oe_avatar"/>
-                            <field name="supervisor_id"/>
+                            <field name="supervisor_id" domain="[('is_supervisor','=',True)]"/> <!-- Esto es un dominio a nivel de base de datos a la tabla empleados -->
                             <field name="name"/>
                             <field name="editorial"/>
                             <field name="isbn"/>

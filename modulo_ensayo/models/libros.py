@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 #Creando un modelo (tabla de la base de datos) a partir de una clase
@@ -18,6 +19,16 @@ class Libros(models.Model):
     categoria_id = fields.Many2one(comodel_name="categoria.libro")
     state = fields.Selection([("draft","Borrador"),("published","Publicado")], default="draft")
     description = fields.Char(string="Descripcion", compute="_compute_descripcion")
+    
+    @api.constrains('name')
+    def _check_campo_unico(self):
+        for record in self:
+            # Verificar si ya existe un registro con el mismo valor
+            if self.env['libros'].search([
+                # Aqui se colocan los campos que se quieren evaluar para que estos no se repitan
+                    ('name', '=', record.name)
+                ]):
+                raise ValidationError("El nombre del libro ya existe")
 
     #Con la palabra reservada api.depends se establecen dependencias en los campos, de modo que sin la necesidad de guardar el registro el dato del campo se guarda igualmente
     @api.depends('name','isbn')
@@ -32,11 +43,6 @@ class Libros(models.Model):
     #En esta funcion se guarda el boton de borrar
     def boton_borrar(self):
         self.state='draft'
-
-_sql_contraints = [("name_uniq", "unique(name)", "¡¡El nombre del libro ya existe!!")]
-#Nombre del sql constraints
-#unique () los valores que no queremos que se dupliquen
-#Mensaje de error
 
 class CategoriaLibro(models.Model):
     _name = 'categoria.libro'
