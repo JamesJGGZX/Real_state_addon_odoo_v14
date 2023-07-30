@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="estate_model_action" model="ir.actions.act_window">
+        <field name="name">Title</field>
+        <field name="res_model">real.estate</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="estate_type_model_action" model="ir.actions.act_window">
+        <field name="name">Type</field>
+        <field name="res_model">real.estate_type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="estate_tag_model_action" model="ir.actions.act_window">
+        <field name="name">Tag</field>
+        <field name="res_model">real.estate_tag</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="estate_menu_root" name="Real Estate">
+        <menuitem id="estate_menu_property_root" name="Advertisements">
+            <menuitem id="estate_menu_action" name="Properties" action="estate_model_action"/>
+        </menuitem>
+        <menuitem id="estate_menu_property_types" name="Settings">
+            <menuitem id="estate_menu_types_action" name="Property Types" action="estate_type_model_action"/>
+            <menuitem id="estate_menu_tag_action" name="Property Tags" action="estate_tag_model_action"/>
+        </menuitem>
+    </menuitem>
+
+</odoo>

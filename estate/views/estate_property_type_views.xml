@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Vista formulario (form) -->
+    <record id="estate_property_type_view_form" model="ir.ui.view">
+        <field name="name">estate.property.type.form</field>
+        <field name="model">real.estate_type</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <field name="name" widget="char" style="font-size: 30px; text-align: left; border-bottom: solid 1px #000; padding-bottom: 5px;"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista lista (tree) -->
+    <record id="estate_property_type_view_tree" model="ir.ui.view">
+        <field name="name">estate.property.type.tree</field>
+        <field name="model">real.estate_type</field>
+        <field name="arch" type="xml">
+            <tree string="List Tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de busquedas (search) -->
+    <record id="view_estate_property_type_search" model="ir.ui.view">
+        <field name="name">estate.property.type.search</field>
+        <field name="model">real.estate_type</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+</odoo>
