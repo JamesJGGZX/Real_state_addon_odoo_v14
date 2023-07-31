@@ -13,6 +13,8 @@
                 <field name="expected_price"/>
                 <field name="selling_price"/>
                 <field name="date_availability"/>
+                <field name="property_type_id"/>
+                <field name="tag_ids"/> 
             </tree>
         </field>
     </record>
@@ -23,15 +25,25 @@
         <field name="model">real.estate</field>
         <field name="arch" type="xml">
             <form string="Form">
+                <header>
+                    <button name="cancel_property" string="Cancel" type="object" groups="base.group_user"/>
+                    <button name="sold_property" string="Sold" type="object" groups="base.group_user"/>
+                    <!-- <button name="accept_offer" string="Accept" type="object" class="btn-primary"/>
+                    <button name="reject_offer" string="Decline" type="object" class="btn-secondary"/> -->
+                </header>
                 <sheet>
                     <field name="name" widget="char" style="font-size: 30px; text-align: left; margin-top: 5px;"/>
+                    <field name="tag_ids" widget="many2many_tags"/>
                     <group>
                         <group>
+                            <field name="state"/> 
+                            <field name="property_type_id"/> 
                             <field name="postcode"/>
                             <field name="date_availability"/>
                         </group>
                         <group>
                             <field name="expected_price"/>
+                            <field name="best_price"/>
                             <field name="selling_price"/>
                         </group>
                         <notebook>
@@ -45,7 +57,25 @@
                                     <field name="garden"/>
                                     <field name="garden_area"/>
                                     <field name="garden_orientation"/>
+                                    <field name="total_area"/>
                                 </group>
+                            </page>
+                            <page string="Other Info" style="border-top: 1px solid #000000; height: 100%; margin-top: 10px;">
+                                <group>
+                                    <field name="seller_id"/>
+                                    <field name="buyer_id"/>
+                                </group>
+                            </page>
+                            <page string="Offers" style="border-top: 1px solid #000000; height: 100%; margin-top: 10px;">
+                                <field name="offer_ids">
+                                    <tree>
+                                        <field name="price"/>
+                                        <field name="partner_id"/>
+                                        <field name="validity"/>
+                                        <field name="date_deadline"/>
+                                        <field name="status"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
                     </group>
@@ -66,6 +96,7 @@
                 <field name="bedrooms"/>
                 <field name="living_area"/>
                 <field name="facades"/>
+                <field name="property_type_id"/> 
                 <separator/>
                     <filter string="Available" name="date_availability" domain="[('state', '=', 'new'),('state','=','offer received')]"/>
                     <group expand="1" string="Group By">
