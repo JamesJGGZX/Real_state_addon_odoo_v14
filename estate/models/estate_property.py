@@ -1,6 +1,7 @@
 from odoo import models, fields, api, exceptions
 from odoo.exceptions import ValidationError
 from datetime import date, timedelta
+from odoo.tools.float_utils import float_compare, float_is_zero
 
 
 class EstateProperty(models.Model):
@@ -57,6 +58,15 @@ class EstateProperty(models.Model):
     total_area = fields.Float(string="Total Area(sqm)", compute="_compute_total_area")
     best_price = fields.Float(string="Best Offer", compute='_compute_best_price')
 
+    @api.constrains("selling_price")
+    def _check_minimum_sale_price(self):
+        for record in self:
+            if not float_is_zero(record.selling_price, precision_digits=2):
+                expected_price = self.env["real.estate"].search([("id", "=", record.id)]).expected_price
+                minimum_price = expected_price * 0.9
+                if float_compare(record.selling_price, minimum_price, precision_digits=2) == -1:
+                    raise ValidationError("The sale price cannot be less than 90% of the expected price.")
+    
     @api.constrains("expected_price")
     def _check_positive_expected_price(self):
         for record in self:
@@ -71,19 +81,10 @@ class EstateProperty(models.Model):
 
     def sold_property(self):
         if self.state == "canceled":
-            raise exceptions.UserError("You cannot cancel a sold property.")
+            raise exceptions.UserError("You cannot sell a canceled property.")
         else:
             self.state = "sold"
 
-    def accept_offer(self):
-        self.ensure_one()
-        self.state = "accepted"
-        self.property_id.buyer = self.buyer.id
-        self.property_id.sale_price = self.best_price
-
-    def reject_offer(self):
-        self.ensure_one()
-        self.state = "rejected"
 
     @api.onchange("garden")
     def _onchange_jardin(self):

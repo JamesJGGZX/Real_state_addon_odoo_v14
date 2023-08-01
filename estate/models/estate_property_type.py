@@ -7,6 +7,7 @@ class EstatePropertyType(models.Model):
     _rec_name = 'name'
 
     name = fields.Char(string="Title",required=True)
+    property_ids = fields.One2many("real.estate","property_type_id")
 
     @api.constrains("name")
     def _check_unique_property_label(self):

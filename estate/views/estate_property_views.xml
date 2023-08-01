@@ -33,6 +33,7 @@
                 </header>
                 <sheet>
                     <field name="name" widget="char" style="font-size: 30px; text-align: left; margin-top: 5px;"/>
+                    <separator/>
                     <field name="tag_ids" widget="many2many_tags"/>
                     <group>
                         <group>
@@ -45,6 +46,7 @@
                             <field name="expected_price"/>
                             <field name="best_price"/>
                             <field name="selling_price"/>
+                        </group>
                         </group>
                         <notebook>
                             <page string="Description" style="border-top: 1px solid #000000; height: 100%; margin-top: 10px;">
@@ -73,12 +75,13 @@
                                         <field name="partner_id"/>
                                         <field name="validity"/>
                                         <field name="date_deadline"/>
-                                        <field name="status"/>
+                                        <field name="status" string="Status" attrs="{'invisible': [('status', 'not in', ['accepted', 'refused'])]}"/>
+                                        <button name="accept_offer" status="accepted" type="object" icon="fa-check"/>
+                                        <button name="reject_offer" status="refused" type="object" icon="fa-times"/>
                                     </tree>
                                 </field>
                             </page>
                         </notebook>
-                    </group>
                 </sheet>
             </form>
         </field>

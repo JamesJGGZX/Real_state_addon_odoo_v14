@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from odoo.exceptions import ValidationError
 
 
-class EstatePropertyType(models.Model):
+class EstatePropertyOffer(models.Model):
     _name = "real.estate_offer"
     _description = "The Real Estate Module offer Master"
 
@@ -23,6 +23,16 @@ class EstatePropertyType(models.Model):
     create_date = fields.Datetime(string="Create Date", default=fields.Datetime.now())
     backup_create_date = fields.Datetime(string='Backup Create Date')
 
+    def accept_offer(self):
+        self.ensure_one()
+        self.status = "accepted"
+        self.property_id.buyer_id = self.partner_id.id
+        self.property_id.selling_price  = self.price
+
+    def reject_offer(self):
+        self.ensure_one()
+        self.status = "refused"
+    
     @api.constrains("price")
     def _check_positive_offer_price(self):
         for record in self:
@@ -33,11 +43,16 @@ class EstatePropertyType(models.Model):
     def _onchange_create_date(self):
         self.backup_create_date = self.create_date
 
-    @api.depends("backup_create_date", "validity")
+    @api.depends("create_date", "validity")
     def _compute_date_deadline(self):
         for record in self:
-            create_date = record.backup_create_date or datetime.now()
-            record.date_deadline = create_date + timedelta(days=record.validity)
+            if record.create_date and record.validity:
+                record.date_deadline = record.create_date + timedelta(days=record.validity)
+
+    def _inverse_date_deadline(self):
+        for record in self:
+            if record.date_deadline and record.create_date:
+                record.validity = (record.date_deadline - record.create_date).days
 
     def _inverse_date_deadline(self):
         for record in self:
