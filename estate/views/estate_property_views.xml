@@ -26,6 +26,7 @@
         <field name="arch" type="xml">
             <form string="Form">
                 <header>
+                    <field name="state" widget="statusbar" statusbar_visible="new,offer received,offer accepted,sold,canceled"/>
                     <button name="cancel_property" string="Cancel" type="object" groups="base.group_user"/>
                     <button name="sold_property" string="Sold" type="object" groups="base.group_user"/>
                     <!-- <button name="accept_offer" string="Accept" type="object" class="btn-primary"/>
@@ -34,11 +35,10 @@
                 <sheet>
                     <field name="name" widget="char" style="font-size: 30px; text-align: left; margin-top: 5px;"/>
                     <separator/>
-                    <field name="tag_ids" widget="many2many_tags"/>
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_edit_color': False}"/>
                     <group>
                         <group>
-                            <field name="state"/> 
-                            <field name="property_type_id"/> 
+                            <field name="property_type_id" options="{'no_create': True}"/> 
                             <field name="postcode"/>
                             <field name="date_availability"/>
                         </group>
@@ -57,8 +57,8 @@
                                     <field name="facades"/>
                                     <field name="garage"/>
                                     <field name="garden"/>
-                                    <field name="garden_area"/>
-                                    <field name="garden_orientation"/>
+                                    <field name="garden_area" attrs="{'invisible': [('garden','=',False)]}"/>
+                                    <field name="garden_orientation" attrs="{'invisible': [('garden','=',False)]}"/>
                                     <field name="total_area"/>
                                 </group>
                             </page>
@@ -76,7 +76,7 @@
                                         <field name="validity"/>
                                         <field name="date_deadline"/>
                                         <field name="status" string="Status" attrs="{'invisible': [('status', 'not in', ['accepted', 'refused'])]}"/>
-                                        <button name="accept_offer" status="accepted" type="object" icon="fa-check"/>
+                                        <button name="accept_offer" status="accepted" type="object" icon="fa-check" groups="base.group_user"/>
                                         <button name="reject_offer" status="refused" type="object" icon="fa-times"/>
                                     </tree>
                                 </field>
@@ -108,4 +108,5 @@
             </search>
         </field>
     </record>
+
 </odoo>

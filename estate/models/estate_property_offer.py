@@ -6,6 +6,7 @@ from odoo.exceptions import ValidationError
 class EstatePropertyOffer(models.Model):
     _name = "real.estate_offer"
     _description = "The Real Estate Module offer Master"
+    _order = "price desc"
 
     price = fields.Float(string="Price")
     status = fields.Selection(
@@ -20,8 +21,8 @@ class EstatePropertyOffer(models.Model):
     property_id = fields.Many2one(comodel_name="real.estate", required=True)
     validity = fields.Integer(string="Validity (days)", default=7)
     date_deadline = fields.Date(string="Deadline")
-    create_date = fields.Datetime(string="Create Date", default=fields.Datetime.now())
-    backup_create_date = fields.Datetime(string='Backup Create Date')
+    #create_date = fields.Datetime(string="Create Date", default=fields.Datetime.now())
+    #backup_create_date = fields.Datetime(string='Backup Create Date')
 
     def accept_offer(self):
         self.ensure_one()
