@@ -1,11 +1,13 @@
 from odoo import models, fields, api, exceptions
 from odoo.exceptions import ValidationError
 from datetime import date, timedelta
+from odoo.tools.float_utils import float_compare, float_is_zero
 
 
 class EstateProperty(models.Model):
     _name = "real.estate"
     _description = "The Real Estate Module Master"
+    _order = "id desc"
 
     name = fields.Char(string="Title", required=True)
     description = fields.Text(string="Description")
@@ -56,7 +58,30 @@ class EstateProperty(models.Model):
     offer_ids = fields.One2many("real.estate_offer", "property_id", string="Offers")
     total_area = fields.Float(string="Total Area(sqm)", compute="_compute_total_area")
     best_price = fields.Float(string="Best Offer", compute='_compute_best_price')
+    # tag_names = fields.Char(string='Tag Names', compute='_compute_tag_names', readonly=True)
 
+    
+    # @api.depends("tag_ids")
+    # def _compute_tag_names(self):
+    #     for record in self:
+    #         tag_names = ", ".join(record.tag_ids.mapped("name"))
+    #         record.tag_names = tag_names
+
+    @api.constrains("selling_price")
+    def _check_minimum_sale_price(self):
+        for record in self:
+            if not float_is_zero(record.selling_price, precision_digits=2):
+                expected_price = self.env["real.estate"].search([("id", "=", record.id)]).expected_price
+                minimum_price = expected_price * 0.9
+                if float_compare(record.selling_price, minimum_price, precision_digits=2) == -1:
+                    raise ValidationError("The sale price cannot be less than 90% of the expected price.")
+    
+    @api.constrains("expected_price")
+    def _check_positive_expected_price(self):
+        for record in self:
+            if record.expected_price <= 0:
+                raise ValidationError("The expected price must be strictly positive.")
+    
     def cancel_property(self):
         if self.state == "sold":
             raise exceptions.UserError("You cannot cancel a sold property.")
@@ -65,19 +90,10 @@ class EstateProperty(models.Model):
 
     def sold_property(self):
         if self.state == "canceled":
-            raise exceptions.UserError("You cannot cancel a sold property.")
+            raise exceptions.UserError("You cannot sell a canceled property.")
         else:
             self.state = "sold"
 
-    def accept_offer(self):
-        self.ensure_one()
-        self.state = "accepted"
-        self.property_id.buyer = self.buyer.id
-        self.property_id.sale_price = self.best_price
-
-    def reject_offer(self):
-        self.ensure_one()
-        self.state = "rejected"
 
     @api.onchange("garden")
     def _onchange_jardin(self):

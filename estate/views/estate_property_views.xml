@@ -7,14 +7,13 @@
         <field name="arch" type="xml">
             <tree string="List Tree">
                 <field name="name"/>
+                <field name="property_type_id"/>
                 <field name="postcode"/>
-                <field name="bedrooms"/>
+                <field name="tag_ids" widget="many2many_tags"/> <!-- Campo oculto -->
                 <field name="living_area"/>
                 <field name="expected_price"/>
                 <field name="selling_price"/>
-                <field name="date_availability"/>
-                <field name="property_type_id"/>
-                <field name="tag_ids"/> 
+                <field name="date_availability" optional="1"/> 
             </tree>
         </field>
     </record>
@@ -26,18 +25,19 @@
         <field name="arch" type="xml">
             <form string="Form">
                 <header>
-                    <button name="cancel_property" string="Cancelar" states="draft" class="btn-secondary"/>
-                    <button name="sold_property" string="Vendido" states="draft" class="btn-secondary"/>
-                    <button name="accept_offer" string="Aceptar" states="draft" class="btn-primary"/>
-                    <button name="reject_offer" string="Rechazar" states="draft" class="btn-secondary"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,offer received,offer accepted,sold,canceled"/>
+                    <button name="cancel_property" string="Cancel" type="object" groups="base.group_user"/>
+                    <button name="sold_property" string="Sold" type="object" groups="base.group_user"/>
+                    <!-- <button name="accept_offer" string="Accept" type="object" class="btn-primary"/>
+                    <button name="reject_offer" string="Decline" type="object" class="btn-secondary"/> -->
                 </header>
                 <sheet>
                     <field name="name" widget="char" style="font-size: 30px; text-align: left; margin-top: 5px;"/>
-                    <field name="tag_ids" widget="many2many_tags"/>
+                    <separator/>
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_edit_color': False}"/>
                     <group>
                         <group>
-                            <field name="state"/> 
-                            <field name="property_type_id"/> 
+                            <field name="property_type_id" options="{'no_create': True}"/> 
                             <field name="postcode"/>
                             <field name="date_availability"/>
                         </group>
@@ -45,6 +45,7 @@
                             <field name="expected_price"/>
                             <field name="best_price"/>
                             <field name="selling_price"/>
+                        </group>
                         </group>
                         <notebook>
                             <page string="Description" style="border-top: 1px solid #000000; height: 100%; margin-top: 10px;">
@@ -55,8 +56,8 @@
                                     <field name="facades"/>
                                     <field name="garage"/>
                                     <field name="garden"/>
-                                    <field name="garden_area"/>
-                                    <field name="garden_orientation"/>
+                                    <field name="garden_area" attrs="{'invisible': [('garden','=',False)]}"/>
+                                    <field name="garden_orientation" attrs="{'invisible': [('garden','=',False)]}"/>
                                     <field name="total_area"/>
                                 </group>
                             </page>
@@ -67,20 +68,19 @@
                                 </group>
                             </page>
                             <page string="Offers" style="border-top: 1px solid #000000; height: 100%; margin-top: 10px;">
-                                <group>
-                                    <field name="offer_ids">
-                                        <tree>
-                                            <field name="price"/>
-                                            <field name="partner_id"/>
-                                            <field name="validity"/>
-                                            <field name="date_deadline"/>
-                                            <field name="status"/>
-                                        </tree>
-                                    </field>
-                                </group>
+                                <field name="offer_ids">
+                                    <tree editable="top">
+                                        <field name="price"/>
+                                        <field name="partner_id"/>
+                                        <field name="validity"/>
+                                        <field name="date_deadline"/>
+                                        <field name="status" string="Status" attrs="{'invisible': [('status', 'not in', ['accepted', 'refused'])]}"/>
+                                        <button name="accept_offer" status="accepted" type="object" icon="fa-check" groups="base.group_user"/>
+                                        <button name="reject_offer" status="refused" type="object" icon="fa-times"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
-                    </group>
                 </sheet>
             </form>
         </field>
@@ -107,4 +107,5 @@
             </search>
         </field>
     </record>
+
 </odoo>

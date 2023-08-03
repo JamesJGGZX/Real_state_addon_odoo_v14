@@ -8,6 +8,17 @@
             <form string="Form">
                 <sheet>
                     <field name="name" widget="char" style="font-size: 30px; text-align: left; border-bottom: solid 1px #000; padding-bottom: 5px;"/>
+                    <notebook>
+                        <page string="Properties" style="border-top: 1px solid #000000; height: 100%; margin-top: 10px;">
+                            <field name="property_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="expected_price"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -20,6 +31,7 @@
         <field name="arch" type="xml">
             <tree string="List Tree">
                 <field name="name"/>
+                <field name="name_asc" widget="handle"/>
             </tree>
         </field>
     </record>
