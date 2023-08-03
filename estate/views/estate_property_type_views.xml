@@ -32,6 +32,8 @@
             <tree string="List Tree">
                 <field name="name"/>
                 <field name="name_asc" widget="handle"/>
+                <field name="offer_ids"/>
+                <field name="offer_count"/>
             </tree>
         </field>
     </record>

@@ -21,6 +21,7 @@ class EstatePropertyOffer(models.Model):
     property_id = fields.Many2one(comodel_name="real.estate", required=True)
     validity = fields.Integer(string="Validity (days)", default=7)
     date_deadline = fields.Date(string="Deadline")
+    property_type_id = fields.Many2one("real.estate_type", string='Property Type',related='property_id.property_type_id', store=True)
     #create_date = fields.Datetime(string="Create Date", default=fields.Datetime.now())
     #backup_create_date = fields.Datetime(string='Backup Create Date')
 
@@ -29,6 +30,7 @@ class EstatePropertyOffer(models.Model):
         self.status = "accepted"
         self.property_id.buyer_id = self.partner_id.id
         self.property_id.selling_price  = self.price
+        self.property_id.state = "offer_accepted"
 
     def reject_offer(self):
         self.ensure_one()

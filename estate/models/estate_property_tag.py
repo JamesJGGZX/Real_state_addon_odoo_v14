@@ -15,3 +15,4 @@ class EstatePropertyType(models.Model):
             existing_property = self.search([("name", "=", record.name)])
             if len(existing_property) > 1:
                 raise ValidationError("The property label must be unique.")
+            
