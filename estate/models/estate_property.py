@@ -58,6 +58,14 @@ class EstateProperty(models.Model):
     offer_ids = fields.One2many("real.estate_offer", "property_id", string="Offers")
     total_area = fields.Float(string="Total Area(sqm)", compute="_compute_total_area")
     best_price = fields.Float(string="Best Offer", compute='_compute_best_price')
+    # tag_names = fields.Char(string='Tag Names', compute='_compute_tag_names', readonly=True)
+
+    
+    # @api.depends("tag_ids")
+    # def _compute_tag_names(self):
+    #     for record in self:
+    #         tag_names = ", ".join(record.tag_ids.mapped("name"))
+    #         record.tag_names = tag_names
 
     @api.constrains("selling_price")
     def _check_minimum_sale_price(self):

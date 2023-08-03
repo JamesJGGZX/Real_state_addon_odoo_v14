@@ -7,14 +7,13 @@
         <field name="arch" type="xml">
             <tree string="List Tree">
                 <field name="name"/>
+                <field name="property_type_id"/>
                 <field name="postcode"/>
-                <field name="bedrooms"/>
+                <field name="tag_ids" widget="many2many_tags"/> <!-- Campo oculto -->
                 <field name="living_area"/>
                 <field name="expected_price"/>
                 <field name="selling_price"/>
-                <field name="date_availability"/>
-                <field name="property_type_id"/>
-                <field name="tag_ids"/> 
+                <field name="date_availability" optional="1"/> 
             </tree>
         </field>
     </record>
@@ -70,7 +69,7 @@
                             </page>
                             <page string="Offers" style="border-top: 1px solid #000000; height: 100%; margin-top: 10px;">
                                 <field name="offer_ids">
-                                    <tree>
+                                    <tree editable="top">
                                         <field name="price"/>
                                         <field name="partner_id"/>
                                         <field name="validity"/>
