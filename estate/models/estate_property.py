@@ -57,9 +57,13 @@ class EstateProperty(models.Model):
     tag_ids = fields.Many2many(comodel_name="real.estate_tag", string="Tags")
     offer_ids = fields.One2many("real.estate_offer", "property_id", string="Offers")
     total_area = fields.Float(string="Total Area(sqm)", compute="_compute_total_area")
-    best_price = fields.Float(string="Best Offer", compute='_compute_best_price')
+    best_price = fields.Float(string="Best Offer", compute="_compute_best_price")
     # tag_names = fields.Char(string='Tag Names', compute='_compute_tag_names', readonly=True)
 
+    def unlink(self):
+        for record in self:
+            if record.state not in ["new", "canceled"]:
+                raise exceptions.ValidationError("You cannot delete a property that is not in a 'New' or 'Canceled' state.")
     
     # @api.depends("tag_ids")
     # def _compute_tag_names(self):
