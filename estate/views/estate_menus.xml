@@ -1,18 +1,22 @@
 <?xml version="1.0" ?>
 <odoo>
+    
+    <!-- Acción del modelo estate_property.py -->
     <record id="estate_model_action" model="ir.actions.act_window">
         <field name="name">Title</field>
         <field name="res_model">real.estate</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
         <field name="context">{'search_default_date_availability': True}</field>
     </record>
 
+    <!-- Acción del modelo estate_property_type.py -->
     <record id="estate_type_model_action" model="ir.actions.act_window">
         <field name="name">Type</field>
         <field name="res_model">real.estate_type</field>
         <field name="view_mode">tree,form</field>
     </record>
 
+    <!-- Acción del modelo estate_property_tag.py -->
     <record id="estate_tag_model_action" model="ir.actions.act_window">
         <field name="name">Tag</field>
         <field name="res_model">real.estate_tag</field>
