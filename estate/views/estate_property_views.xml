@@ -9,7 +9,7 @@
                 <field name="name"/>
                 <field name="property_type_id"/>
                 <field name="postcode"/>
-                <field name="tag_ids" widget="many2many_tags"/> <!-- Campo oculto -->
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_edit_color': False}"/> <!-- Campo oculto -->
                 <field name="living_area"/>
                 <field name="expected_price"/>
                 <field name="selling_price"/>
@@ -28,8 +28,6 @@
                     <field name="state" widget="statusbar" statusbar_visible="new,offer received,offer accepted,sold,canceled"/>
                     <button name="cancel_property" string="Cancel" type="object" groups="base.group_user"/>
                     <button name="sold_property" string="Sold" type="object" groups="base.group_user"/>
-                    <!-- <button name="accept_offer" string="Accept" type="object" class="btn-primary"/>
-                    <button name="reject_offer" string="Decline" type="object" class="btn-secondary"/> -->
                 </header>
                 <sheet>
                     <field name="name" widget="char" style="font-size: 30px; text-align: left; margin-top: 5px;"/>
@@ -68,15 +66,15 @@
                                 </group>
                             </page>
                             <page string="Offers" style="border-top: 1px solid #000000; height: 100%; margin-top: 10px;">
-                                <field name="offer_ids">
-                                    <tree editable="top">
+                                <field name="offer_ids" attrs="{'readonly': [('state', 'in', ['offer_accepted', 'sold'])]}">
+                                    <tree editable="top" decoration-success="status=='accepted'" decoration-danger="status=='refused'">
                                         <field name="price"/>
                                         <field name="partner_id"/>
                                         <field name="validity"/>
                                         <field name="date_deadline"/>
                                         <field name="status" string="Status" attrs="{'invisible': [('status', 'not in', ['accepted', 'refused'])]}"/>
-                                        <button name="accept_offer" status="accepted" type="object" icon="fa-check" groups="base.group_user"/>
-                                        <button name="reject_offer" status="refused" type="object" icon="fa-times"/>
+                                        <button name="accept_offer" status="accepted" type="object" icon="fa-check" groups="base.group_user" attrs="{'invisible': [('status', 'in', ['accepted', 'refused'])]}"/>
+                                        <button name="reject_offer" status="refused" type="object" icon="fa-times" groups="base.group_user" attrs="{'invisible': [('status', 'in', ['accepted', 'refused'])]}"/>
                                     </tree>
                                 </field>
                             </page>
@@ -96,7 +94,7 @@
                 <field name="postcode"/>
                 <field name="expected_price"/>
                 <field name="bedrooms"/>
-                <field name="living_area"/>
+                <field name="living_area" filter_domain="[('living_area', '>=', self)]"/>
                 <field name="facades"/>
                 <field name="property_type_id"/> 
                 <separator/>

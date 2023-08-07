@@ -15,6 +15,8 @@
         'views/estate_menus.xml',
         'views/estate_property_views.xml',
         'views/estate_property_type_views.xml',
+        'views/estate_property_offer_views.xml',
+        'views/inherited_model_users_views.xml'
     ],
     'demo': [
         #'demo/demo.xml',

@@ -6,7 +6,7 @@
     """,
     'author':'Isaac Blanco',
     'category':'General',
-    'version':'1.0.0',
+    'version':'14.0.1',
     'depends':['mail','hr'],
     'data':[
         'views/menu_view.xml',
