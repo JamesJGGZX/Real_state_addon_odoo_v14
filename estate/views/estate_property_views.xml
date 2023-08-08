@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
+    
     <!-- Vista lista (tree) -->
     <record id="estate_property_view_tree" model="ir.ui.view">
         <field name="name">estate.property.tree</field>
@@ -98,12 +99,51 @@
                 <field name="facades"/>
                 <field name="property_type_id"/> 
                 <separator/>
-                    <filter string="Available" name="date_availability" domain="[('state', '=', 'new'),('state','=','offer received')]"/>
+                    <filter string="Available" name="date_availability" domain="[('state', '=', 'new'),('state','=','offer_received')]"/>
                     <group expand="1" string="Group By">
                         <filter string="Postcode" name="postcode" context="{'group_by':'postcode'}"/>
                     </group>
             </search>
         </field>
     </record>
+
+    <!-- Vista Kanban del modulo (kanban) -->
+    <record id="real_estate_kanban_view" model="ir.ui.view">
+    <field name="name">real.estate.kanban.view</field>
+    <field name="model">real.estate</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="property_type_id" drag_drop="0">
+            <field name="name"/>
+            <field name="expected_price"/>
+            <field name="best_price"/>
+            <field name="state" invisible="1"/>
+            <field name="selling_price"/>
+            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click">
+                        <div class="oe_kanban_details">
+                            <div>
+                                <strong style="font-size: 1.3em;"><t t-esc="record.name.raw_value"/></strong>
+                            </div>
+                            <div>
+                                Expected Price: <t t-esc="record.expected_price.raw_value"/>
+                            </div>
+                            <div t-if="record.best_price.raw_value">
+                                Best Price: <t t-esc="record.best_price.raw_value"/>
+                            </div>
+                            <div t-if="record.selling_price.raw_value">
+                                Selling Price: <t t-esc="record.selling_price.raw_value"/>
+                            </div>
+                            <div >
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
 
 </odoo>
