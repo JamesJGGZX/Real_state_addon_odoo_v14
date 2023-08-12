@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
+
 class EstatePropertyType(models.Model):
     _name = "real.estate_type"
     _description = "The Real Estate Module Type Master"
@@ -13,10 +14,12 @@ class EstatePropertyType(models.Model):
     offer_ids = fields.One2many("real.estate_offer", "property_type_id", string="Offers")
     offer_count = fields.Integer(compute="_compute_offer_count", string="Offer Count")
 
+    
     @api.depends("offer_ids")
     def _compute_offer_count(self):
         for rec in self:
             rec.offer_count = len(rec.offer_ids)
+    
     
     @api.constrains("name")
     def _check_unique_property_label(self):

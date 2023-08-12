@@ -58,18 +58,13 @@ class EstateProperty(models.Model):
     offer_ids = fields.One2many("real.estate_offer", "property_id", string="Offers")
     total_area = fields.Float(string="Total Area(sqm)", compute="_compute_total_area")
     best_price = fields.Float(string="Best Offer", compute="_compute_best_price")
-    # tag_names = fields.Char(string='Tag Names', compute='_compute_tag_names', readonly=True)
+    
 
     def unlink(self):
         for record in self:
             if record.state not in ["new", "canceled"]:
                 raise exceptions.ValidationError("You cannot delete a property that is not in a 'New' or 'Canceled' state.")
     
-    # @api.depends("tag_ids")
-    # def _compute_tag_names(self):
-    #     for record in self:
-    #         tag_names = ", ".join(record.tag_ids.mapped("name"))
-    #         record.tag_names = tag_names
 
     @api.constrains("selling_price")
     def _check_minimum_sale_price(self):
@@ -80,11 +75,13 @@ class EstateProperty(models.Model):
                 if float_compare(record.selling_price, minimum_price, precision_digits=2) == -1:
                     raise ValidationError("The sale price cannot be less than 90% of the expected price.")
     
+    
     @api.constrains("expected_price")
     def _check_positive_expected_price(self):
         for record in self:
             if record.expected_price <= 0:
                 raise ValidationError("The expected price must be strictly positive.")
+    
     
     def cancel_property(self):
         if self.state == "sold":
@@ -92,6 +89,7 @@ class EstateProperty(models.Model):
         else:
             self.state = "canceled"
 
+    
     def sold_property(self):
         if self.state == "canceled":
             raise exceptions.UserError("You cannot sell a canceled property.")
@@ -108,17 +106,20 @@ class EstateProperty(models.Model):
             self.garden_area = False
             self.garden_orientation = False
     
+    
     @api.depends("offer_ids.price")
     def _compute_best_price(self):
         for record in self:
             prices = record.offer_ids.mapped("price")
             record.best_price = max(prices) if prices else 0.0
     
+    
     @api.depends("living_area", "garden_area")
     def _compute_total_area(self):
         for record in self:
             record.total_area = record.living_area + record.garden_area
 
+    
     @api.constrains("date_availability")
     def _check_duplicate_field(self):
         for record in self:
@@ -130,6 +131,7 @@ class EstateProperty(models.Model):
             ):
                 raise ValidationError("The available date field already exists.")
 
+    
     @api.constrains("expected_price")
     def _check_duplicate_field(self):
         for record in self:

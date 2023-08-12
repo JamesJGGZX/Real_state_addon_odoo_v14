@@ -23,6 +23,7 @@
         <field name="view_mode">tree,form</field>
     </record>
     
+    <!-- Menus principales del modulo -->
     <menuitem id="estate_menu_root" name="Real Estate">
         <menuitem id="estate_menu_property_root" name="Advertisements">
             <menuitem id="estate_menu_action" name="Properties" action="estate_model_action"/>

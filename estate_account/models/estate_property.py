@@ -12,20 +12,10 @@ class EstateProperty(models.Model):
         partner_id = self.env.user.property_ids.buyer_id
         move_type = 'out_invoice'
     
-         # Verificar si el diario existe
-        # journal_name = 'Nombre del Diario'
-        # journal = self.env['account.journal'].search([('name', '=', journal_name)], limit=1)
-        
-        # if not journal:
-        #     raise ValueError(f"No se encontró el diario '{journal_name}'")
-        
-        # journal_id = journal.id
-    
         # Crear valores para la factura vacía
         move_values = {
             'partner_id': partner_id,
             'move_type': move_type,
-            # 'journal_id': journal_id,
         }
     
         # Crear el objeto account.move vacío
@@ -58,3 +48,4 @@ class EstateProperty(models.Model):
         # Aquí puedes agregar lógica personalizada de negocio
     
         return res
+    

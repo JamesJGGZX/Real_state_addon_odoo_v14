@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-from datetime import datetime, timedelta
+from datetime import timedelta
 from odoo.exceptions import ValidationError, UserError
 
 
@@ -22,8 +22,7 @@ class EstatePropertyOffer(models.Model):
     validity = fields.Integer(string="Validity (days)", default=7)
     date_deadline = fields.Date(string="Deadline")
     property_type_id = fields.Many2one("real.estate_type", string="Property Type",related="property_id.property_type_id", store=True)
-    #create_date = fields.Datetime(string="Create Date", default=fields.Datetime.now())
-    #backup_create_date = fields.Datetime(string='Backup Create Date')
+
 
     def accept_offer(self):
         self.ensure_one()
@@ -36,6 +35,7 @@ class EstatePropertyOffer(models.Model):
         self.ensure_one()
         self.status = "refused"
 
+   
     @api.model
     def create(self, vals):
         # Obtener la propiedad asociada a la oferta
@@ -62,21 +62,25 @@ class EstatePropertyOffer(models.Model):
             if record.price <= 0:
                 raise ValidationError("The offer price must be strictly positive.")
     
+    
     @api.onchange("create_date")
     def _onchange_create_date(self):
         self.backup_create_date = self.create_date
 
+    
     @api.depends("create_date", "validity")
     def _compute_date_deadline(self):
         for record in self:
             if record.create_date and record.validity:
                 record.date_deadline = record.create_date + timedelta(days=record.validity)
 
+    
     def _inverse_date_deadline(self):
         for record in self:
             if record.date_deadline and record.create_date:
                 record.validity = (record.date_deadline - record.create_date).days
 
+    
     def _inverse_date_deadline(self):
         for record in self:
             record.backup_create_date = record.date_deadline - timedelta(days=record.validity)
