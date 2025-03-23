@@ -1,0 +1,22 @@
+# Ignorar carpetas de caché de Python
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignorar archivos de backup de editores
+*.swp
+*.swo
+*~
+*.bak
+
+# Ignorar archivos compilados
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar entornos virtuales
+venv/
+.env/
+.env.bak/
+.venv/
