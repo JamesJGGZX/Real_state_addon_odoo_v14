@@ -1,0 +1,604 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* real_state
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-07 19:07+0000\n"
+"PO-Revision-Date: 2023-08-07 19:07+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__state__offer_accepted
+msgid " aceptada"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__state__offer_received
+msgid " reservada"
+msgstr ""
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.estate_property_type_view_form
+msgid "<span> Offers</span>"
+msgstr "<span> Offertas</span>"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__avalible_date
+msgid "Avalible Date"
+msgstr "Fecha disponible"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__bedrooms
+msgid "Bedrooms"
+msgstr "Habitaciones"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__best_price
+msgid "Best Price"
+msgstr "Mejor precio"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__buyer_id
+msgid "Buyer"
+msgstr "Comprador"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__state__canceled
+msgid "Cancelado"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_state_property_tag__color
+msgid "Color"
+msgstr "Color"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+msgid "Confirm A"
+msgstr "Confirmar A"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__cozy_id
+msgid "tag"
+msgstr "Tag"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__create_date
+msgid "Fecha Creada"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type__create_uid
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__create_uid
+#: model:ir.model.fields,field_description:real_state.field_state_property_tag__create_uid
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type__create_date
+#: model:ir.model.fields,field_description:real_state.field_state_property_tag__create_date
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__move_type__out_refund
+msgid "Customer Credit Note"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__move_type__out_invoice
+msgid "Customer Invoice"
+msgstr "Nota de crédito del cliente"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__date_availability
+msgid "Date Availability"
+msgstr "Fecha Disponibilidad"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__date_disponibility
+msgid "Date Disponibility"
+msgstr "Disponibilidad de fecha"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__date_deadline
+msgid "Deadline Date"
+msgstr "Fecha límite"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__description
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+msgid "Description"
+msgstr "Descripción"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type__display_name
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__display_name
+#: model:ir.model.fields,field_description:real_state.field_state_property_tag__display_name
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: real_state
+#: model:ir.model.constraint,message:real_state.constraint_state_property_tag_unique_tag_name
+msgid "El nombre de etiqueta de propiedad debe ser único."
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.constraint,message:real_state.constraint_estate_property_type_unique_type_name
+msgid "El nombre de tipo de propiedad debe ser único."
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.constraint,message:real_state.constraint_state_property_offer_check_price_positive
+#: model:ir.model.constraint,message:real_state.constraint_test_model_manuel_check_selling_price_positive
+msgid "El precio de venta debe ser positivo."
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__garden_orientation__east
+msgid "Este"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__expected_price
+msgid "Expected Price"
+msgstr "Precio esperado"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__facades
+msgid "Facades"
+msgstr "fachadas"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__garage
+msgid "Garage"
+msgstr "Cochera"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__garden
+msgid "Garden"
+msgstr "Jardín"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__garden_area
+msgid "Garden Area"
+msgstr "Zona de Jardín"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__garden_orientation
+msgid "Garden Orientation"
+msgstr "Orientación del jardín"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type__id
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__id
+#: model:ir.model.fields,field_description:real_state.field_state_property_tag__id
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__id
+msgid "ID"
+msgstr "IDENTIFICACIÓN"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__move_type__entry
+msgid "Journal Entry"
+msgstr "Entrada de diario"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type____last_update
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer____last_update
+#: model:ir.model.fields,field_description:real_state.field_state_property_tag____last_update
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type__write_uid
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__write_uid
+#: model:ir.model.fields,field_description:real_state.field_state_property_tag__write_uid
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type__write_date
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__write_date
+#: model:ir.model.fields,field_description:real_state.field_state_property_tag__write_date
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__living_area
+msgid "Living Area"
+msgstr "Sala de estar"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+msgid "Sold"
+msgstr "vendido"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_kanban_view
+msgid "Mejor precio:"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type__name
+#: model:ir.model.fields,field_description:real_state.field_state_property_tag__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__garden_orientation__north
+msgid "Norte"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__state__new
+msgid "Nuevo"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__garden_orientation__west
+msgid "Oeste"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type__offer_count
+msgid "Offer Count"
+msgstr "Numero de Ofertas"
+
+#. module: real_state
+#. odoo-python
+#: code:addons/real_state/models/state_property_type.py:0
+#: model:ir.actions.act_window,name:real_state.smart_model_offer_action
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__new_fiel_ids
+#, python-format
+msgid "Offers"
+msgstr "Ofertas"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+msgid "Offrs"
+msgstr ""
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+msgid "Other info"
+msgstr "Otra información"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__state__sold
+msgid "Pagado"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__partner_id
+msgid "Partner"
+msgstr "Cliente"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__postcode
+msgid "Postcode"
+msgstr "Código postal"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_kanban_view
+msgid "Precio de venta:"
+msgstr ""
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_kanban_view
+msgid "Precio esperado:"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__price
+msgid "Price"
+msgstr "Precio"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_res_users__property_ids
+#: model_terms:ir.ui.view,arch_db:real_state.view_users_form_inherit
+msgid "Properties"
+msgstr "Propiedades"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type__property_id
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__property_id
+msgid "Property"
+msgstr "Propiedad"
+
+#. module: real_state
+#: model:ir.actions.act_window,name:real_state.test_model_tag_action
+#: model:ir.ui.menu,name:real_state.menu_test_model_tag_action
+msgid "Property Tags"
+msgstr ""
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__property_type_id
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__property_type_id
+msgid "Property Type"
+msgstr "Etiquetas de propiedad"
+
+#. module: real_state
+#: model:ir.actions.act_window,name:real_state.test_model_property_action
+#: model:ir.ui.menu,name:real_state.menu_test_model_property_action
+msgid "Property Types"
+msgstr "Tipos de propiedad"
+
+#. module: real_state
+#: model:ir.actions.act_window,name:real_state.test_model_offer_action
+#: model:ir.ui.menu,name:real_state.menu_test_model_offer_action
+msgid "Property offer"
+msgstr ""
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.estate_property_type_view_form
+msgid "Propiedades"
+msgstr "Oferta de propiedad"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__move_type__in_receipt
+msgid "Purchase Receipt"
+msgstr "Recibo de compra"
+
+#. module: real_state
+#: model:ir.actions.act_window,name:real_state.test_model_action
+#: model:ir.ui.menu,name:real_state.test_menu_root
+#: model:ir.ui.menu,name:real_state.test_model_manuel_menu_action
+msgid "Real State"
+msgstr "Bienes raíces"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "Real state"
+msgstr "Bienes raíces"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+msgid "Refused A"
+msgstr "Rechazado A"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+msgid "Resfused"
+msgstr "Rechazado"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__move_type__out_receipt
+msgid "Sales Receipt"
+msgstr "Recibo de compra"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__seller_id
+msgid "Salesman"
+msgstr "Vendedor"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__selling_price
+msgid "Selling Price"
+msgstr "Precio de venta"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: real_state
+#: model:ir.ui.menu,name:real_state.test_2_level_menu
+msgid "Settings"
+msgstr "Ajustes"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__state
+msgid "State"
+msgstr "Estado"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__garden_orientation__south
+msgid "Sur"
+msgstr ""
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.state_property_tag_view_tree
+msgid "Tag"
+msgstr "Etiqueta"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__title
+msgid "Title"
+msgstr "Título"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__total_area
+msgid "Total Area"
+msgstr "Área total"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_test_model_manuel__move_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: real_state
+#: model:ir.model,name:real_state.model_res_users
+msgid "User"
+msgstr "Usuario"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_state_property_offer__validity
+msgid "Validity"
+msgstr "Validez"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__move_type__in_invoice
+msgid "Vendor Bill"
+msgstr "Factura del proveedor"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__test_model_manuel__move_type__in_refund
+msgid "Vendor Credit Note"
+msgstr "Nota de crédito del proveedor"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__state_property_offer__state__accepted
+msgid "aceptar"
+msgstr ""
+
+#. module: real_state
+#: model:ir.ui.menu,name:real_state.test_first_level_menu
+msgid "advertisements"
+msgstr "anuncios"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "avalible"
+msgstr "disponible"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "bedrooms"
+msgstr "dormitorios"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "canceled"
+msgstr "cancelado"
+
+#. module: real_state
+#: model:ir.model.fields,help:real_state.field_test_model_manuel__garden_orientation
+msgid "cardinality"
+msgstr "cardinalidad"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "expected price"
+msgstr "precio esperado"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "facades"
+msgstr "fachadas"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "living area"
+msgstr "sala de estar"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.estate_property_type_tree
+msgid "manuality"
+msgstr "manualidad"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "new"
+msgstr "Nuevo"
+
+#. module: real_state
+#: model:ir.ui.menu,name:real_state.test_3_level_menu
+msgid "offer"
+msgstr "Oferta"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "offer accepted"
+msgstr "oferta aceptada"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "offer received"
+msgstr "oferta recibida"
+
+#. module: real_state
+#: model:ir.model.fields,field_description:real_state.field_estate_property_type__property_offers_ids
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+msgid "offers"
+msgstr "Ofertas"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "postcode"
+msgstr "código postal"
+
+#. module: real_state
+#: model:ir.model,name:real_state.model_state_property_offer
+msgid "property offer"
+msgstr "oferta de propiedad"
+
+#. module: real_state
+#: model:ir.model,name:real_state.model_state_property_tag
+msgid "property tag"
+msgstr "etiqueta de propiedad"
+
+#. module: real_state
+#: model:ir.model,name:real_state.model_estate_property_type
+msgid "property type"
+msgstr "tipo de propiedad"
+
+#. module: real_state
+#: model:ir.model,name:real_state.model_test_model_manuel
+msgid "real state yisus"
+msgstr "bienes raíces Jesus"
+
+#. module: real_state
+#: model:ir.model.fields.selection,name:real_state.selection__state_property_offer__state__refused
+msgid "rechazado"
+msgstr ""
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "sold"
+msgstr "vendido"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_tree
+msgid "state property"
+msgstr "propiedad del Estado"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+msgid "tag"
+msgstr "etiqueta"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.view_account_search
+msgid "title"
+msgstr "título"
+
+#. module: real_state
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_form
+#: model_terms:ir.ui.view,arch_db:real_state.test_model_manuel_view_tree
+msgid "type property"
+msgstr "tipo de propiedad"
